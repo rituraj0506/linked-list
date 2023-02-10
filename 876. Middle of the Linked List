@@ -1,0 +1,32 @@
+ ListNode* middleNode(ListNode* head) {
+       // first app coubnt total node middle is count/2
+        int c=0;
+        ListNode*temp=head;
+        while(temp!=NULL)
+        {
+            c++;
+            temp=temp->next;
+        }
+        int middle=c/2;
+        temp=head; // traverse from first
+        while(middle>0)
+        {
+            middle--;
+            temp=temp->next;
+        }
+        return temp;
+    }
+    T(c)=o(n)
+    s(c)=o(1)
+    
+    2nd apporch
+  struct ListNode* middleNode(struct ListNode* head){
+     struct ListNode *slow,*fast;
+    slow=fast=head;
+    while(fast&&fast->next)
+    {
+        fast=fast->next->next;
+        slow=slow->next;
+    }
+    return slow;
+}
