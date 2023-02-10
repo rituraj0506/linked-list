@@ -1,0 +1,36 @@
+Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+Example 1:
+Input: head = [1,2,2,1]
+Output: true
+apporch t(c)=o(N) s(c)=o(1)
+
+Get the middle of the linked list.Reverse the second half of the linked list.Check if the first half and second half are identical. 
+
+ bool isPalindrome(ListNode* head) {
+     ListNode*sl=head;
+     ListNode*fs=head;
+        while(fs&&fs->next)
+        {
+         sl=sl->next;
+         fs=fs->next->next;
+        }
+        ListNode*curr=sl;
+        ListNode*newnode=NULL;
+        while(curr!=NULL)
+        {
+         ListNode*next=curr->next;
+           curr->next=newnode;
+            newnode=curr;
+            curr=next;
+        }
+        // rev second half and check with first half
+    // means 1 2 2 1 => 1 2 1 2 new node pt 1
+        while(newnode!=NULL)
+        {
+            if(head->val!= newnode->val)
+                return false;
+            head=head->next;
+            newnode=newnode->next;
+        }
+        return true;
+    }
