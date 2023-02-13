@@ -1,0 +1,19 @@
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+
+ ListNode* removeNthFromEnd(ListNode* head, int n) {
+     //using two pointer   
+     ListNode*sl=head;
+     ListNode*fs=head;
+       while(n--) 
+         fs=fs->next;
+    if(fs==NULL) return head -> next;       // if fast is already null, it means we have to delete head itself. So, just return next of head [1,2] 2 in case return head->next
+        while(fs->next!=NULL)
+        {
+         fs=fs->next;
+         sl=sl->next;
+        }
+        sl->next=sl->next->next;
+        return head;
+    }
