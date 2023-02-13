@@ -1,0 +1,31 @@
+approch 1 using hashset t(c)=o(n) s(c)=o(n)
+
+ bool hasCycle(ListNode *head) {
+    unordered_set<ListNode*>s;
+    while(head!=NULL)
+    {
+        if(s.count(head))
+            return true;
+         s.insert(head);
+        head=head->next;
+    }
+    return false;
+    }
+    
+    approch 2 using sl and fast two pointer
+    t(c)=o(n) s(c)=o(1)
+    
+    bool hasCycle(ListNode *head) {
+       ListNode*sl=head;
+        ListNode*fs=head;
+        if(head==NULL|| head->next==NULL)
+            return false;
+        while(fs&&fs->next)
+        {
+            sl=sl->next;
+            fs=fs->next->next;
+            if(sl==fs) return true;;
+        }
+        return false;
+    }
+    
