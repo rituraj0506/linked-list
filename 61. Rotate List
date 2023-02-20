@@ -1,0 +1,35 @@
+Given the head of a linked list, rotate the list to the right by k places.
+ Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+optimal approch
+find the length of linked list
+next of last node assign to the first node
+length - k node ke next me null assign kro
+aur length-k ke baad wale node ko head assign kr ke return kr do
+
+if(k==12) n=5
+10 rotation gives u orignal linked list 
+so u rotate only 2 times gives ans so(k=k%len)
+
+if(head==NULL||head->next==NULL)
+         return head;
+        ListNode*temp=head;
+        int len=1;
+        while(temp->next!=NULL)
+        {
+             len++;
+           temp=temp->next;
+        }
+        temp->next=head;
+        k=k%len;
+        int nl=len-k; 
+        while(nl--)
+        {
+            temp=temp->next;
+        }
+        head=temp->next;/*now it is pointing 4*/
+         temp->next=NULL;
+        return head;
+
+
