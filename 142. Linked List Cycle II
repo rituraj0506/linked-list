@@ -1,0 +1,48 @@
+Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+apporch 1 t(c)=O(n) s(c)=o(n)
+
+ListNode *detectCycle(ListNode *head) {
+unordered_set<ListNode*>s;
+        ListNode*temp=head;
+    while(temp!=NULL)
+    {
+        if(s.count(temp))
+            return temp;
+         s.insert(temp);
+        temp=temp->next;
+    }
+    return NULL;     
+    }
+    
+    apporch 2 t(c)=o(n) s(c)=o(1)
+    
+    ListNode *detectCycle(ListNode *head) {
+        ListNode*sl=head;
+        ListNode*fs=head;
+        int flag=0;
+        while(fs&&fs->next)
+        {
+            sl=sl->next;
+            fs=fs->next->next;
+            if(sl==fs){ /*in this example sl=fs at -4*/
+                flag=1;
+                break;
+            }
+        }
+       if(flag==1)
+       {
+         fs=head;
+           while(sl!=fs)
+           {
+               sl=sl->next;
+               fs=fs->next;
+           }
+           return sl;
+        }
+        return NULL; 
+    }
