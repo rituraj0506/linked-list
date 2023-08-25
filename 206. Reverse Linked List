@@ -14,3 +14,10 @@ Output: [5,4,3,2,1]
         }
         return newhead;
     }
+
+The loop runs for the entire length of the linked list. Therefore, the time complexity of this code is O(n), 
+where n is the number of nodes in the linked list.
+
+Space Complexity:
+The space complexity of the code is O(1), which is constant space. This is because the code uses a fixed number of extra variables (prev, next) 
+regardless of the size of the linked list. 
